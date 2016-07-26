@@ -1,0 +1,6 @@
+rootProject.name = 'microservices'
+include 'microservices-bookstore'
+include 'microservices-reading'
+include 'hystrix-dashboard'
+include 'config-service'
+

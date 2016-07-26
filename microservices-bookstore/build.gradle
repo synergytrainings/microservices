@@ -1,0 +1,57 @@
+buildscript {
+	ext {
+		springBootVersion = '1.3.6.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath('io.spring.gradle:dependency-management-plugin:0.5.4.RELEASE')
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+apply plugin: 'io.spring.dependency-management'
+
+sourceCompatibility = 1.8
+group 'com.synisys.demo'
+version '1.0-SNAPSHOT'
+
+jar {
+	baseName = 'bookstore'
+	version = '1.0'
+}
+
+
+repositories {
+	mavenCentral()
+	maven {
+		url "http://repo.spring.io/libs-milestone-local"
+	}
+	maven {
+		url "http://repo.spring.io/release"
+	}
+	maven {
+		url "http://repo.spring.io/libs-snapshot-local"
+	}
+}
+
+configurations {
+	compile.exclude module: "spring-boot-starter-tomcat"
+}
+
+dependencies {
+	compile("org.springframework.boot:spring-boot-starter-jetty")
+	compile('org.springframework.boot:spring-boot-starter-actuator')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.cloud:spring-cloud-starter-config:1.1.2.RELEASE')
+//	compile('org.springframework.cloud:spring-cloud-starter-eureka:1.0.0.RELEASE')
+//	compile('org.springframework.cloud:spring-cloud-commons:1.0.0.RELEASE')
+//	compile('org.springframework.integration:spring-integration-core:4.2.5.RELEASE')
+	compile("javax.el:javax.el-api:2.2.4")
+	compile("org.glassfish.web:javax.el:2.2.4")
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
