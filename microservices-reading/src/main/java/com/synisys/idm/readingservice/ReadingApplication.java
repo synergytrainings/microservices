@@ -11,8 +11,8 @@ import org.springframework.context.annotation.ImportResource;
 @SpringBootApplication
 @EnableDiscoveryClient
 //@IntegrationComponentScan
-@ImportResource("classpath:application-config.xml")
 @EnableFeignClients
+@ImportResource("classpath:application-config.xml")
 public class ReadingApplication {
 
 	public static void main(String[] args) {

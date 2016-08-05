@@ -1,0 +1,16 @@
+|===
+|Path|Type|Description
+
+|id
+|Number
+|Title of the book
+
+|title
+|String
+|Title of the book
+
+|author
+|String
+|Author of the book
+
+|===

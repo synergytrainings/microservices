@@ -1,0 +1,61 @@
+buildscript {
+	ext {
+		springBootVersion = '1.3.8.BUILD-SNAPSHOT'
+	}
+	repositories {
+		mavenCentral()
+		maven { url "https://repo.spring.io/snapshot" }
+		maven { url "https://repo.spring.io/milestone" }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+apply plugin: 'io.spring.dependency-management'
+
+jar {
+	baseName = 'authentication-authorization'
+	version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+	maven { url "https://repo.spring.io/snapshot" }
+	maven { url "https://repo.spring.io/milestone" }
+}
+
+
+configurations {
+	compile.exclude module: "spring-boot-starter-tomcat"
+}
+
+dependencies {
+	compile('org.springframework.cloud:spring-cloud-commons')
+	compile("org.springframework.boot:spring-boot-starter-jetty")
+	compile('org.springframework.boot:spring-boot-starter-actuator')
+	compile('org.springframework.cloud:spring-cloud-starter-config')
+	compile('org.springframework.boot:spring-boot-starter-web')
+
+	compile('org.springframework.cloud:spring-cloud-starter-hystrix')
+	compile('org.springframework.cloud:spring-cloud-starter-stream-rabbit')
+	compile('org.springframework.cloud:spring-cloud-starter-eureka')
+
+	compile('org.springframework.cloud:spring-cloud-starter-sleuth')
+	compile('org.springframework.cloud:spring-cloud-sleuth-core')
+	compile('org.springframework.cloud:spring-cloud-sleuth-zipkin')
+
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:Brixton.RELEASE"
+	}
+}
+

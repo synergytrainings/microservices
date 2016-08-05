@@ -3,4 +3,5 @@ include 'microservices-bookstore'
 include 'microservices-reading'
 include 'hystrix-dashboard'
 include 'config-service'
+include 'authentication-authorization'
 
